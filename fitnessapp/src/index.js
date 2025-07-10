@@ -1,18 +1,18 @@
-import axios from "axios";
-const API = axios.create({
-  baseURL: "https://fitnesstrack-vtv1.onrender.com/api/",
-});
-export const UserSignUp = async (data) => API.post("/user/signup", data);
-export const UserSignUp = async (data) => API.post("/user/signin", data);
-export const getDashBoardDetails = async (token) =>
-  API.get("/user/dashboard",{
-  headers: {Authorization: `Bearer ${token}`},
-});
-export const getWorkouts = async (token, date) =>
-  await API.get(`/user/workout${date}`,{
-  headers: {Authorization: `Bearer ${token}`},
-});
-export const addWorkout = async (token, data)=>
-  await API.post(`/user/workout`, data,{
-    headers: {Authorization: `Bearer ${token}`},
-  });
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./redux/store";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
+  </React.StrictMode>
+);

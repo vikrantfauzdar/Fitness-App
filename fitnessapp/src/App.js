@@ -30,7 +30,7 @@ function App(){
           <Navbar curreentUser={currentUser}/>
           <Routes>
             <Route path="/"exact elemment={<Dashboard />}/>
-            <Route path="/workouts" exact element={Workout />} />
+            {/* <Route path="/workouts" exact element={Workkouts />} /> */}
           </Routes>
         </Container>
       ):(
